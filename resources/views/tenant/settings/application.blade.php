@@ -46,12 +46,18 @@
 
 <x-section title="Billing" description="Manage your subscription and payment methods.">
   <div class="mt-4 md:mt-0 w-full md:w-2/3 pl-0 md:pl-2">
-    @livewire('subscription-banner')
-    @livewire('upcoming-payment')
-    @livewire('billing-address')
-    @livewire('invoices')
-    @livewire('subscription-plan')
-    @livewire('payment-method')
+    @if (tenant()->hasStripeId())
+      @livewire('subscription-banner')
+      @livewire('upcoming-payment')
+      @livewire('billing-address')
+      @livewire('invoices')
+      @livewire('subscription-plan')
+      @livewire('payment-method')
+    @else
+      <div class="rounded-md bg-yellow-50 p-4 text-sm text-yellow-800">
+        You are currently not subscribed. Billing setup is incomplete. Add your Stripe credentials and create a Stripe customer to enable billing controls.
+      </div>
+    @endif
   </div>
 </x-section>
 @endsection

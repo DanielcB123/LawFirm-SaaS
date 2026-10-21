@@ -54,7 +54,7 @@ class SubscriptionPlan extends Component
             $this->error = '';
         }
 
-        $this->emit('billingUpdated');
+        $this->dispatch('billingUpdated');
     }
 
     public function cancel($cancelationReason)
@@ -70,7 +70,7 @@ class SubscriptionPlan extends Component
 
         $this->plan = '';
 
-        $this->emit('billingUpdated');
+        $this->dispatch('billingUpdated');
     }
 
     public function resume()
@@ -79,7 +79,7 @@ class SubscriptionPlan extends Component
 
         $this->refreshPlan();
 
-        $this->emit('billingUpdated');
+        $this->dispatch('billingUpdated');
     }
 
     protected function refreshPlan()

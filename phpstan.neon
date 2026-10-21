@@ -1,0 +1,17 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+    paths:
+        - app
+        - config
+        - database
+        - routes
+    level: 1
+    tmpDir: storage/phpstan
+    excludePaths:
+        analyse:
+            - app/Nova/*
+            - app/Providers/NovaServiceProvider.php
+            - app/TenancyBootstrappers/NovaAuthGuardBootstrapper.php
+            - app/Http/Controllers/Tenant/Auth/*

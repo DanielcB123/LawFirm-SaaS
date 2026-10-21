@@ -10,11 +10,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}" defer></script>
-
-    <!-- Styles -->
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
@@ -71,8 +67,10 @@
                                         @if (auth()->user()->isOwner())
                                             <a href="{{ route('tenant.settings.application') }}" class="block px-4 py-1 text-sm text-gray-700 hover:bg-gray-100">Application settings
                                             </a>
-                                            <a href="{{ config('nova.path') }}" class="block px-4 py-1 text-sm text-gray-700 hover:bg-gray-100">Admin panel
-                                            </a>
+                                            @if (class_exists(\Laravel\Nova\Nova::class))
+                                                <a href="{{ config('nova.path') }}" class="block px-4 py-1 text-sm text-gray-700 hover:bg-gray-100">Admin panel
+                                                </a>
+                                            @endif
                                         @endif
                                         <a href="{{ route('tenant.logout') }}" class="block px-4 py-1 text-sm text-gray-700 hover:bg-gray-100"
                                             onclick="event.preventDefault();

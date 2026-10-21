@@ -7,8 +7,6 @@ use Tests\TenantTestCase;
 
 class ApplicationSettingsTest extends TenantTestCase
 {
-    protected $createStripeCustomer = true;
-
     /** @test */
     public function only_owner_can_view_application_settings()
     {

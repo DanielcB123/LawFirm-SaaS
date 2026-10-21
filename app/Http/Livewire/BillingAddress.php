@@ -46,7 +46,7 @@ class BillingAddress extends Component
 
         $this->success = 'Address saved.';
 
-        $this->emit('billingUpdated');
+        $this->dispatch('billingUpdated');
     }
 
     public function render()
