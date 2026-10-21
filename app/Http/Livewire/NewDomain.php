@@ -29,7 +29,7 @@ class NewDomain extends Component
 
         $domain = tenant()->createDomain($this->domain);
 
-        $this->emit('domainsUpdated');
+        $this->dispatch('domainsUpdated');
 
         $this->domain = '';
     }

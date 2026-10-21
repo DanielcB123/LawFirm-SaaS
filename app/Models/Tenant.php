@@ -17,6 +17,7 @@ use Stancl\Tenancy\Database\Models\Tenant as BaseTenant;
  * @property-read bool $can_use_app Can the tenant use the application (is on trial or subscription)
  *
  * @property-read Domain[]|Collection $domains
+ * @property-read Domain|null $primary_domain
  */
 class Tenant extends BaseTenant implements TenantWithDatabase
 {

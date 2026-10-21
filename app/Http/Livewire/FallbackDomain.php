@@ -40,7 +40,7 @@ class FallbackDomain extends Component
         // We don't want them squatting multiple subdomains.
         $oldFallback->delete();
 
-        $this->emit('domainsUpdated');
+        $this->dispatch('domainsUpdated');
 
         $this->domain = '';
 

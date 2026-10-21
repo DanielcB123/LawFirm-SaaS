@@ -14,6 +14,14 @@ return new class extends Migration {
      */
     public function up()
     {
+        if (Schema::getConnection()->getDriverName() === 'sqlite') {
+            return;
+        }
+
+        if (! Schema::hasTable('failed_jobs') || Schema::hasColumn('failed_jobs', 'uuid')) {
+            return;
+        }
+
         Schema::table('failed_jobs', function (Blueprint $table) {
             $table->string('uuid')->after('id')->nullable()->unique();
         });
@@ -32,6 +40,14 @@ return new class extends Migration {
      */
     public function down()
     {
+        if (Schema::getConnection()->getDriverName() === 'sqlite') {
+            return;
+        }
+
+        if (! Schema::hasTable('failed_jobs') || ! Schema::hasColumn('failed_jobs', 'uuid')) {
+            return;
+        }
+
         Schema::table('failed_jobs', function (Blueprint $table) {
             $table->dropColumn('uuid');
         });

@@ -25,6 +25,6 @@ class PaymentMethod extends Component
 
         tenant()->updateDefaultPaymentMethod($this->paymentMethod);
 
-        $this->emit('billingUpdated');
+        $this->dispatch('billingUpdated');
     }
 }

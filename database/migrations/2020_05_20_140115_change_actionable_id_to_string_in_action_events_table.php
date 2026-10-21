@@ -12,6 +12,10 @@ return new class extends Migration {
      */
     public function up()
     {
+        if (Schema::getConnection()->getDriverName() === 'sqlite' || ! Schema::hasTable('action_events')) {
+            return;
+        }
+
         Schema::table('action_events', function (Blueprint $table) {
             $table->string('actionable_id')->change();
             $table->string('target_id')->change();
@@ -26,6 +30,10 @@ return new class extends Migration {
      */
     public function down()
     {
+        if (Schema::getConnection()->getDriverName() === 'sqlite' || ! Schema::hasTable('action_events')) {
+            return;
+        }
+
         Schema::table('action_events', function (Blueprint $table) {
             $table->unsignedBigInteger('actionable_id')->change();
             $table->unsignedBigInteger('target_id')->change();
